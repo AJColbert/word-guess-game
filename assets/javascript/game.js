@@ -58,7 +58,6 @@ document.onkeyup = function (event)
                     document.getElementById("wins").innerHTML = wincount;
                     //Get new word and reset
                     NewWord();
-
                 }
             }
             else
