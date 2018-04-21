@@ -1,14 +1,18 @@
 body{
     background: url(../images/dark-triangles.png);
+    font-family: 'Do Hyeon', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Acme', sans-serif;
     color: #89B5CD;
 }
 
 .header{
-    
-    
+    font-family: 'Press Start 2P', cursive;
+    font-family: 'Stalinist One', cursive;
+    margin-top: 1.8em;
 }
 .message{
-   
+    font-family: 'IBM Plex Mono', monospace;
     margin: 2em auto;
 }
 .counter-guess{

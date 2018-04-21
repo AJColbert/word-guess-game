@@ -3,32 +3,35 @@
 
 <head>
     <title>Guessing Game</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
         crossorigin="anonymous">
-  <!--  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />-->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Stalinist+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Do+Hyeon|IBM+Plex+Mono" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <meta name="viewport" content="width=device-width">
     
 </head>
 
 <body>
     <div class="container">
-        <header class="header">
-            <h1>HANGMAN</h1>
+        <header class="header text-center">
+            <h1>HANGMAN - RETRO GAMES</h1>
         </header>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 message">
                 <!-- Press Any KEY to start title-->
                 <h4>Press Any Key To Start</h4>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 counter-guess">
                 <!-- Guesses Left-->
                 <h4>Guesses Remaining:
                     <span id="remainingguesses"></span>
                 </h4>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12 counter-win">
                 <!-- Game Wins Counter-->
                 <h4>Wins:
                     <span id="wins"></span>
@@ -38,20 +41,20 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-currentword">
                         <!--Word to Guess Blanks -->
-                        <h4 class:"currentword">Current Word: <span id="currentword"></spanid></h4>
+                        <h4>Current Word: <span id="currentword"></span></h4>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 col-letterguessed">
                         <!-- Used Word Logger-->
                         <h4>Letters Already Guessed:</h4>
                         <h4 id="lettersguessed"></h4>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 extra-col">
                 <!-- Previous Correct answer or other content ie pictures-->
             </div>
         </div>
