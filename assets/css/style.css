@@ -1,0 +1,71 @@
+body{
+    background: url(../images/dark-triangles.png);
+    color: #89B5CD;
+}
+
+.header{
+    
+    
+}
+.message{
+   
+    margin: 2em auto;
+}
+.counter-guess{
+    background-color: #191B1C;
+    border: 5px dashed #26596A;
+    border-bottom: 0px;
+   color:#89B5CD;
+    padding: 2em;
+}
+.counter-win{
+    background-color: #191B1C;
+    border: 5px dashed #26596A;
+    color: #89B5CD;
+    padding: 2em;
+    border-left: 0px;
+}
+
+.col-currentword{
+    background-color: #191B1C;
+    border: 5px dashed #26596A;
+    border-bottom: 0px;
+    border-top: 0px;
+    padding: 2em;
+    color: #89B5CD;
+}
+
+.col-letterguessed{
+    background-color: #191B1C;
+    border: 5px dashed #26596A;
+    border-top: 0px;
+    padding: 2em;
+    color: #89B5CD;
+}
+#currentword{
+    letter-spacing: 1.2em;
+}
+
+.extra-col{
+    background-color: #191B1C;
+    border: 5px dashed #26596A;
+    border-top: 0px;
+    border-left: 0px;
+    padding: 2em;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media screen and (max-width: 768px){
+    .counter-win{
+        border-left: 5px dashed #26596A;
+        border-top: 0px;
+        border-bottom: 0px;
+        
+    }
+    .extra-col{
+        border-left: 5px dashed #26596A;
+        border-top: 0px;
+    }
+    
+    
+}
