@@ -1,6 +1,11 @@
 var gamecategory = {
-    retrogames: ["DONKEYKONG", "ICECLIMBERS", "MARIO", "PACMAN", "TETRIS", "DOOM", "ZELDA", "SONIC", "SPACEINVADERS", "PAPERBOY", "CONTRA", "METRIOD", "ASTERIODS", "DEFENDER",
-        "DUCKHUNT", "CIVILIZATION", "MEGAMAN", "FROGGER", "FINALFANTASY", "SPYRO", "DIABLO", "TEKKEN", "STARFOX", "GAUNTLET"]
+    retrogames: {"DONKEYKONG":"assets/images/donkeykong.png", "MARIO":"assets/images/mario.jpg", "PACMAN":"assets/images/pacman.png",
+     "TETRIS":"assets/images/tetris.png", "DOOM":"assets/images/doom.jpg", "ZELDA":"assets/images/zelda.jpg", "SONIC":"assets/images/sonic.png",
+      "SPACEINVADERS":"assets/images/spaceinvaders.jpg", "PAPERBOY":"assets/images/paperboy.png", "CONTRA":"assets/images/contra.jpg",
+       "METRIOD":"assets/images/metroid.jpg", "ASTERIODS":"assets/images/asteriods.jpg", "DEFENDER":"assets/images/defender.png",
+       "DUCKHUNT":"assets/images/duckhunt", "CIVILIZATION":"assets/images/civilizations.png", "MEGAMAN":"assets/images/megaman.jpg", "FROGGER":"frogger.jpg",
+        "FINALFANTASY":"assets/images/finalfantasy.png", "SPYRO":"assets/images/spyro.jpg", "DIABLO":"assets/images/diablo.png", "TEKKEN":"assets/images/tekken.jpg", 
+        "STARFOX":"assets/images/starfox.jpg", "GAUNTLET":"assets/images/gauntlet.jpg"}
 
 };
 
@@ -9,12 +14,14 @@ var currentword;
 var guessedletters;
 var guesscount;
 var wincount;
+var gameover = false;
 
 // SetWins done in html
 NewWord()
 //Reset Wins
 wincount = 0;
 document.getElementById("wins").innerHTML = wincount;
+
 
 function NewWord()
 {
@@ -26,7 +33,7 @@ function NewWord()
     guessedletters = "";
     document.getElementById("lettersguessed").innerHTML = guessedletters;
     //Set Guess counter and display in html
-    guesscount = 12;
+    guesscount = 10;
     document.getElementById("remainingguesses").innerHTML = guesscount;
 
 }
@@ -35,39 +42,45 @@ function NewWord()
 document.onkeyup = function (event)
 {
 
-    // Determines which key was pressed.
-    var userGuess = event.key;
-    userGuess = userGuess.toUpperCase();
-    var guessed = PreviouslyGuessed(currentword, userGuess);
-    var restrict = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-    //Restrict to only allow character input
-    if (restrict.includes(userGuess))
+    if (!gameover)
     {
-        //Check if already guessed
-        if (!guessed)
-        {
-            if (categoryword.includes(userGuess))
-            {
-                //Update Current Word
-                currentword = CurrentWord(categoryword, userGuess);
-                if (currentword == categoryword)
-                {
-                    //Increase Wins
-                    wincount += 1;
-                    document.getElementById("wins").innerHTML = wincount;
-                    //Get new word and reset
-                    NewWord();
-                }
-            }
-            else
-            {
-                //Update letters guessed and guess counter
-                WrongGuess(userGuess);
+        // Determines which key was pressed.
+        var userGuess = event.key;
+        userGuess = userGuess.toUpperCase();
+        var guessed = PreviouslyGuessed(currentword, userGuess);
+        var restrict = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-                if (guesscount == 0)//move to out side of guessed
+        //Restrict to only allow character input
+        if (restrict.includes(userGuess))
+        {
+            //Check if already guessed
+            if (!guessed)
+            {
+                if (categoryword.includes(userGuess))
                 {
-                    //Game Over No more guesses
+                    //Update Current Word
+                    currentword = CurrentWord(categoryword, userGuess);
+                    if (currentword == categoryword)
+                    {
+                        //Increase Wins
+                        wincount += 1;
+                        document.getElementById("wins").innerHTML = wincount;
+                        //Set new image
+                        document.getElementById("image").setAttribute("src", gamecategory.retrogames[currentword]);
+                        document.getElementById("image").setAttribute("style", "display: block");
+                        //Get new word and reset
+                        NewWord();
+                    }
+                }
+                else
+                {
+                    //Update letters guessed and guess counter
+                    WrongGuess(userGuess);
+
+                    if (guesscount == 0)//move to out side of guessed
+                    {
+                        GameOver();
+                    }
                 }
             }
         }
@@ -77,9 +90,9 @@ document.onkeyup = function (event)
 //Get the Random word from user to guess
 function GetWord()
 {
-    var length = gamecategory.retrogames.length;
+    var length = Object.keys(gamecategory.retrogames).length;
     var randomindex = Math.floor(Math.random() * Math.floor(length));
-    var word = gamecategory.retrogames[randomindex]
+    var word = Object.keys(gamecategory.retrogames)[randomindex];
     return word;
 }
 
@@ -145,8 +158,6 @@ function PreviouslyGuessed(currentword, guess)
 
 function WrongGuess(guess)
 {
-    // guesscount = parseInt(document.getElementById("remainingguesses").value);//I think just use guess count variable should be enough html grab not needed
-
     if (guesscount != 0)
     {
         //decrease guess count
@@ -159,5 +170,12 @@ function WrongGuess(guess)
     }
 }
 
+function GameOver()
+{
+    gameover = true;
 
+    var a = "Game Over -- Refresh the page to start a new game";
+    document.getElementById("extra-col-p").innerHTML = a;
+
+}
 

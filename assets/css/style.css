@@ -58,6 +58,12 @@ body{
     padding: 2em;
 }
 
+#image{
+    width:200px;
+    height: 130px;
+    display:none;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media screen and (max-width: 768px){
     .counter-win{
